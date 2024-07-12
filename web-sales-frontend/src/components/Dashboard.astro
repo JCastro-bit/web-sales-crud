@@ -1,0 +1,25 @@
+---
+import SalesDashboard from "./SalesDashboard.astro";
+
+const apiUrl = import.meta.env.PUBLIC_API_URL;
+const response = await fetch(`${apiUrl}/websales`);
+const sales = await response.json();
+---
+
+<div>
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h2 class="text-base font-semibold leading-6 text-gray-900">
+        Registro de Ventas
+      </h2>
+    </div>
+    <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+      <a
+        href="/register"
+        class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >Nueva Venta</a
+      >
+    </div>
+  </div>
+  <SalesDashboard sales={sales} />
+</div>
